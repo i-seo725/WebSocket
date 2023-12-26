@@ -13,7 +13,12 @@ struct SocketView: View {
     private var viewModel = SocketViewModel()
     
     var body: some View {
-        Text("socketView")
+        VStack {
+            ForEach(viewModel.askOrderBook, id: \.id) { item in
+                Text("\(item.price)")
+            }
+        }
+        .padding()
     }
     
 }

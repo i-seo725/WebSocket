@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 //채택한 WebSoketDelegate가 따라가면 NSObjectProtocol을 따르기 때문에 NSObject를 상속받아야 함
 final class WebSocketManager: NSObject {
@@ -20,6 +21,11 @@ final class WebSocketManager: NSObject {
     private var webSocket: URLSessionWebSocketTask?
     private var timer: Timer?
     private var isOpen = false //소켓 연결 상태
+    
+    //RxSwift PublishSubject vs Combine PassthroughSubject
+    //RxSwift BehaviorSubject vs Combine CurrentValueSubject
+    //RxSwift 데이터 타입만 설정 vs Combine은 오류 처리를 위한 오류 타입도 적어야 함(Never)
+    var orderBookSbj = PassthroughSubject<OrderBookWS, Never>()
     
     //소켓 열기 요청
     func openWebSocket() {
@@ -69,6 +75,8 @@ final class WebSocketManager: NSObject {
                     case .data(let data):
                         if let decodeData = try? JSONDecoder().decode(OrderBookWS.self, from: data) {
                             print("receive \(decodeData)")
+                            
+                            self?.orderBookSbj.send(decodeData) //send: RxSwift의 Next 이벤트
                         }
                     case .string(let string): print(string)
                     @unknown default: print("unknown error")
@@ -76,6 +84,7 @@ final class WebSocketManager: NSObject {
                     
                 case .failure(let failure):
                     print("failure ", failure)
+                    self?.closeWebSocket()
                 }
                 self?.receive() //WWDC Websocket 구성 가이드, self 키워드로 캡쳐 돼서 weak self
             })
@@ -89,7 +98,7 @@ final class WebSocketManager: NSObject {
         self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] _ in
             self?.webSocket?.sendPing(pongReceiveHandler: { error in
                 if let error {
-                    print("PingPong Error")
+                    print("PingPong Error ", error)
                 } else {
                     print("Ping")
                 }
