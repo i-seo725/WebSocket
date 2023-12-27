@@ -18,6 +18,7 @@
 		F44784FC2B3A6AFD009868FE /* SocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44784FB2B3A6AFD009868FE /* SocketViewModel.swift */; };
 		F44784FE2B3A6BE4009868FE /* SocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44784FD2B3A6BE4009868FE /* SocketView.swift */; };
 		F44785002B3A7CFA009868FE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44784FF2B3A7CFA009868FE /* Model.swift */; };
+		F44785312B3BB962009868FE /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44785302B3BB962009868FE /* SwiftViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		F44784FB2B3A6AFD009868FE /* SocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketViewModel.swift; sourceTree = "<group>"; };
 		F44784FD2B3A6BE4009868FE /* SocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketView.swift; sourceTree = "<group>"; };
 		F44784FF2B3A7CFA009868FE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F44785302B3BB962009868FE /* SwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				F44784FB2B3A6AFD009868FE /* SocketViewModel.swift */,
 				F44784FD2B3A6BE4009868FE /* SocketView.swift */,
 				F44784FF2B3A7CFA009868FE /* Model.swift */,
+				F44785302B3BB962009868FE /* SwiftViewController.swift */,
 			);
 			path = WebSocket;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				F44785002B3A7CFA009868FE /* Model.swift in Sources */,
 				F44784D02B3A6142009868FE /* WebSocketApp.swift in Sources */,
 				F44784FA2B3A6284009868FE /* WebSocketManager.swift in Sources */,
+				F44785312B3BB962009868FE /* SwiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
